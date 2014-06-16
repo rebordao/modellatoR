@@ -1,0 +1,84 @@
+---
+output: html_document
+---
+
+# Classification Task
+
+## Model Parameters
+
+```{r, echo = F}
+load('../config/params.rda')
+```
+
+**Project Name:** `r params$project_name`   
+**Model:** `r params$method_name`  
+**Output Variable:** `r params$out_var`  
+**Model Formula:** `r params$model_formula`  
+**Type of Task:** Regression `r params$regression` - Classification `r params$classification`  
+**Timestamp:** `r params$timestamp`  
+**Model Parameters:**
+```{r, echo = F}
+print(params$rf)
+```
+
+## Performance Metrics
+
+Add a graph of the trade off between bias and variance, plot the classification training test.
+
+```{r}
+
+# Gets performance object
+pred <- ROCR::prediction(predictions = output$y_est,
+                         labels = output$y)
+
+# Computes contingency table, precision and recall
+nr_tp <- sum(output$y_est[which(output$y == params$pos_class)] == params$pos_class)
+nr_fp <- sum(output$y_est[which(output$y != params$pos_class)] == params$pos_class)
+nr_tn <- sum(output$y_est[which(output$y != params$pos_class)] != params$pos_class)
+nr_fn <- sum(output$y_est[which(output$y == params$pos_class)] != params$pos_class)
+
+# Contingency table
+data.frame(pos = c(nr_tp, nr_fp), 
+           neg = c(nr_fn, nr_tn), 
+           row.names = c("pos", "neg"))
+
+# Precision and recall
+precision <- nr_tp / (nr_tp + nr_fp)
+recall <- nr_tp / (nr_tp + nr_fn)
+
+cat(paste0("Precision: ", precision, "\n", "Recall: ", recall))
+
+# Displays Precision, F1-score and Recall
+cols <- c('green', 'red', 'blue')
+plot(performance(pred, "prec"),
+     col = cols[1], ylim = c(0,1), ylab = 'Proportions', xlab = 'Cutoff',
+     main = "Classification Metrics")
+plot(performance(pred, "f"), col = cols[2], add = T)
+plot(performance(pred, "rec"), col = cols[3], add = T)
+legend('topleft', c("Precision", "F1-score","Recall"), col = cols, lwd = 2, cex = .75)
+
+# Displays tp, fp, tn, fn
+cols <- c(cols, 'magenta')
+plot(performance(pred, "tpr"), col = cols[1], ylim = c(0,1),
+     ylab = 'Proportions', xlab = 'Cutoff')
+plot(performance(pred, "fpr"), col = cols[2], add = T)
+plot(performance(pred, "tnr"), col = cols[3], add = T)
+plot(performance(pred, "fnr"), col = cols[4], add = T)
+legend('topleft',
+c("True Positives","False Positives", "True Negatives", "False Negatives"), 
+col = cols, lwd = 2, cex = .75)
+
+# Displays tp Vs fp (ROC Curve)
+plot(performance(pred, "fpr", "tpr"),
+     col = cols[3], main = 'Roc Curve')
+
+# Displays lift curve
+plot(performance(pred, "lift"), col = cols[4], main = 'Lift Curve')
+
+# Contribution of each variable towards the output
+varImpPlot(model_rf, type = 1)
+varImpPlot(model_rf, type = 2)
+
+# Shows numeric results
+print(data.table(output), nrows = Inf)
+```

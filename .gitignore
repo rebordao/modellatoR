@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+*.Rproj
+*.pdf
+TODO.md
+.DS_Store
+.Rbuildignore

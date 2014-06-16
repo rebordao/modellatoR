@@ -1,0 +1,9 @@
+data_loading: TRUE
+cache_loading: TRUE
+recursive_loading: FALSE
+munging: TRUE
+logging: FALSE
+load_libraries: FALSE
+libraries: modellatoR, randomForest
+as_factors: TRUE
+data_tables: FALSE

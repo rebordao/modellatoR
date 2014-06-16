@@ -1,0 +1,17 @@
+Package: modellatoR
+Title: Set of utilities to semi-automate a classification/regression task.
+Version: 0.1
+Author: Antonio Rebordao <antonio.rebordao@gmail.com>
+Maintainer: Antonio Rebordao <antonio.rebordao@gmail.com>
+Description: A set of utilities to create and setup a modellatoR project. These
+    projects allow the deployment of an automatic baseline for training,
+    testing and reporting that can be easily customized.
+License: MIT + file LICENSE
+Depends:
+    R (>= 3.1.0)
+Imports:
+    ProjectTemplate,
+    randomForest,
+    rmarkdown,
+    data.table,
+    ROCR

@@ -1,0 +1,28 @@
+---
+output: html_document
+---
+
+# Regression Task
+
+## Model Parameters
+
+```{r, echo = F}
+load('../config/params.rda')
+```
+
+**Project Name:** `r params$project_name`   
+**Model:** `r params$method_name`  
+**Output Variable:** `r params$out_var`  
+**Model Formula:** `r params$model_formula`  
+**Type of Task:** Regression `r params$regression` - Classification `r params$classification`  
+**Timestamp:** `r params$timestamp`  
+**Model Parameters:**
+```{r, echo = F}
+print(params$rf)
+```
+
+## Performance Metrics
+
+# Add a graph that plots the training MSE and the validation MSE as a function of the model's flexibility
+
+# Add a graph of the bias and variance as a function of the model's flexibility, plot the test MSE nearby.
