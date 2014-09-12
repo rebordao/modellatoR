@@ -2,6 +2,6 @@
 
 export(create_project)
 export(fit_random_forest)
-export(setup_model)
+export(setup_project)
 export(test_model)
 export(train_model)

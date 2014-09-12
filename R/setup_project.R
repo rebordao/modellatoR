@@ -16,7 +16,7 @@
 #' @return Writes the model's params to a config file at `config/params.R`.
 #' @export
 #'
-setup_model <- function(data, method_id, out_var) {
+setup_project <- function(data, method_id, out_var) {
 
   # Checks if method_id is valid
   if (!(tolower(method_id) %in% c('dt', 'rf', 'glm', 'nn'))) {
@@ -30,7 +30,7 @@ setup_model <- function(data, method_id, out_var) {
 #   }
 
   # Reads from file
-  load(paste0(getwd(), "/config/params.rda"))
+  load(file.path(getwd(), "/config/params.RData"))
 
   params$method_id <- tolower(method_id)
   params$out_var <- out_var
@@ -75,5 +75,5 @@ setup_model <- function(data, method_id, out_var) {
     params$nn <- list(hidden = 10, stepmax = 100, threshold = 0.01)
   }
 
-  save(object = params, file = 'config/params.rda')
+  save(object = params, file = 'config/params.RData')
 }

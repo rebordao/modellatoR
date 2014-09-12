@@ -3,10 +3,12 @@
 \alias{train_model}
 \title{Fits the chosen model to the data.}
 \usage{
-train_model(data, params)
+train_model(trainset, testset, params)
 }
 \arguments{
-\item{data}{is a data.frame or data.table containing the data.}
+\item{trainset}{is a data.frame or data.table containing the train data.}
+
+\item{testset}{is a data.frame or data.table containing the test data.}
 
 \item{params}{is a list containing the arguments necessary for training.}
 }

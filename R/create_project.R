@@ -41,5 +41,5 @@ create_project <- function(working_dir, project_name, project_minimal) {
                  project_name = tail(unlist(strsplit(getwd(), '/')), 1),
                  timestamp = format(Sys.time(), "%Y%m%d_%Hh%M")
                  )
-  save(object = params, file = 'config/params.rda')
+  save(object = params, file = 'config/params.RData')
 }

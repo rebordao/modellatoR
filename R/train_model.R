@@ -6,51 +6,53 @@ A set of tools for training a model.
 
 #' Fits the chosen model to the data.
 #'
-#' @param data is a data.frame or data.table containing the data.
+#' @param trainset is a data.frame or data.table containing the train data.
+#' @param testset is a data.frame or data.table containing the test data.
 #' @param params is a list containing the arguments necessary for training.
 #' @return This function returns the chosen model.
 #' @export
 #'
-train_model <- function(data, params) {
+train_model <- function(trainset, testset, params) {
 
-  model <- function(data, params) {
+  model <- function(trainset, testset, params) {
     switch(tolower(params$method_id),
-           "dt"    = modellatoR::fit_decision_tree(data, params),
-           "rf"    = modellatoR::fit_random_forest(data, params),
-           "glm"   = modellatoR::fit_glm(data, params),
-           "nn"    = modellatoR::fit_neural_net(data, params)
+           "dt"    = modellatoR::fit_decision_tree(trainset, testset, params),
+           "rf"    = modellatoR::fit_random_forest(trainset, testset, params),
+           "glm"   = modellatoR::fit_glm(trainset, testset, params),
+           "nn"    = modellatoR::fit_neural_net(trainset, testset, params)
     )
   }
 
   # Deploys model
-  model(data, params)
+  model(trainset, testset, params)
 }
 
 #### METHODS FOR TRAINING ####
 
 #' Fits a Random Forest Model to the data.
 #'
-#' @param data is a data.frame or data.table containing the data.
-#' @param params is a list containing the arguments necessary for training.
+#' @param trainset is a data.frame or data.table containing the train data.
+#' @param testset is a data.frame or data.table containing the test data.
 #' @return This function returns the chosen model.
 #' @export
 #'
-fit_random_forest = function(data, params) {
+fit_random_forest = function(trainset, testset, params) {
 
-  # If nrow(data) < rf$sampsize sets up samp_size = nrow(data)
-  samp_size <- params$rf$sampsize
-  if (nrow(data) < samp_size) {
-    samp_size <- nrow(data)
-  }
+  # If nrow(data) < rf$sampsize then samp_size = nrow(trainset)
+  samp_size <- ifelse(
+    nrow(trainset) < params$rf$sampsize, nrow(trainset), params$rf$sampsize)
 
-  randomForest::randomForest(formula = as.formula(params$model_formula),
-                             data = data,
-                             ntree = params$rf$ntree,
-                             sampsize = samp_size,
-                             importance = T,
-                             keep.forest = T,
-                             do.trace = T,
-                             na.action = na.omit
+  randomForest::randomForest(
+    x = subset(trainset, select = !(colnames(trainset) %in% params$out_var)),
+    y = trainset[[params$out_var]],
+    xtest = subset(testset, select = !(colnames(testset) %in% params$out_var)),
+    ytest = testset[[params$out_var]],
+    ntree = params$rf$ntree,
+    sampsize = samp_size,
+    importance = T,
+    keep.forest = T,
+    do.trace = T,
+    na.action = na.omit
   )
 }
 
