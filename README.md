@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/rebordao/modellatoR.png)](
+https://travis-ci.org/rebordao/modellatoR)
+
 # ModellatoR
 
 ## Description
@@ -102,7 +105,7 @@ Here you'll store any configurations settings for your project.
 Here you'll store your raw data files. If they are encoded in a supported 
 file format, they'll automatically be loaded when you call `load.project()`.
 
-- `gui`
+- `gui`  
 Here are the files for the graphical interface.
 
 - `munge`  
@@ -132,7 +135,8 @@ usage please check:
 
 This package was made by [Antonio Rebordao](https://www.linkedin.com/in/rebordao).
 
-I would like to acknowledge my employer Mentis SA for supporting this project.
+I would like to acknowledge my employer [Mentis SA](
+http://www.mentis-consulting.be/) for supporting this project.
 
 ## License
 
