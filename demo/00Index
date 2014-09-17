@@ -1,2 +1,3 @@
-modellatoR_demo_classification        Demo for regression.
-modellatoR_demo_regression            Demo for classification.
+perf_classification        Example of a Performance Analysis in a classification setting. Run it with echo = F i.e. demo(perf_classification, echo = F).
+
+perf_regression            Example of a Performance Analysis in a regression setting. Run it with echo = F i.e. demo(perf_regression, echo = F).

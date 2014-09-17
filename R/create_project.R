@@ -22,7 +22,7 @@ create_project <- function(working_dir, project_name, project_minimal) {
   ProjectTemplate::create.project(project.name = project_name,
                                   minimal = project_minimal,
                                   dump = F,
-                                  merge.strategy = "require.empty")
+                                  merge.strategy = 'allow.non.conflict')
 
   setwd(project_name)
 

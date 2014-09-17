@@ -7,7 +7,7 @@ output: html_document
 ## Model Parameters
 
 ```{r, echo = F}
-load('../config/params.rda')
+load('../config/params.RData')
 ```
 
 **Project Name:** `r params$project_name`   
@@ -76,8 +76,10 @@ plot(performance(pred, "fpr", "tpr"),
 plot(performance(pred, "lift"), col = cols[4], main = 'Lift Curve')
 
 # Contribution of each variable towards the output
-varImpPlot(model_rf, type = 1)
-varImpPlot(model_rf, type = 2)
+if (params$method_id == 'rf') {
+ varImpPlot(model, type = 1)
+varImpPlot(model, type = 2) 
+}
 
 # Shows numeric results
 print(data.table(output), nrows = Inf)
