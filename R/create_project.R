@@ -18,6 +18,9 @@ create_project <- function(working_dir, project_name, project_minimal) {
 
   setwd(working_dir)
 
+  # Deletes project_name's folder if it already exists
+  unlink(file.path(working_dir, project_name))
+
   # Creates a folder structure via ProjectTemplate
   ProjectTemplate::create.project(project.name = project_name,
                                   minimal = project_minimal,

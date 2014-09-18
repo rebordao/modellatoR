@@ -11,19 +11,18 @@ trainset <- subset(boston, 1:nrow(boston) < cutoff)
 # Does testset
 testset <- subset(boston, 1:nrow(boston) >= cutoff)
 
-# Creates a temporary dir where to store the modellatoR project
+# Creates a temporary dir to store the modellatoR project
 temp_dir <- tempdir()
 
-# Deletes temp_dir if it already exists
-unlink(file.path(temp_dir, '*'))
-
-# Creates the modellatoR project
+# Creates the modellatoR project,
+# for your projects choose an appropiate working_dir and project_name
 modellatoR::create_project(working_dir = temp_dir,
                            project_name = "demo_regression",
                            project_minimal = T)
 
 # The modellatoR project is the framework for our analytics process,
 # check the content of temp_dir to see its structure and tools.
+# Read carefully how to use this framework and its tools.
 print(temp_dir)
 
 # It's files are as follows:

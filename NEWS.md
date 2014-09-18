@@ -9,6 +9,6 @@ Initial alpha release.
   - Trains and tests the models.
   - Generates automatic reports for regression and classification.
   - Demos for regression and classification.
-- Datasets to illustrate regression and classification (`Boston` and `cancer_w`).
+- Datasets to illustrate regression and classification (`boston` and `cancer_w`).
 - Has Logging System.
 - Has Unit Testing.
