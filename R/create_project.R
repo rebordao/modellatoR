@@ -1,9 +1,3 @@
-"
-A set of tools to create and manage a modellatoR project.
-"
-
-#### CREATES PROJECT ####
-
 #' Creates a folder structure/architecture for the project.
 #'
 #' @param working_dir is the path of the root folder where the

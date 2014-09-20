@@ -1,6 +1,3 @@
-
-#### TESTING ####
-
 #' Tests a model.
 #'
 #' @param model is a model computed with train_model.

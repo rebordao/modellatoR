@@ -1,6 +1,3 @@
-
-#### SETUP MODEL ####
-
 #' Creates the setup of the project.
 #'
 #' @param data is a data.frame or data.table containing the data.
