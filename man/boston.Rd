@@ -8,7 +8,7 @@
  \item \code{crim}: per capita crime rate by town.
  \item \code{zn}: proportion of residential land zoned for
  lots over 25,000 sq.ft.
-	\item \code{indus}: proportion of non-retail business acres per town.
+  \item \code{indus}: proportion of non-retail business acres per town.
 	\item \code{chas}: Charles River dummy variable (1 if tract bounds river;
   0 otherwise).
 	\item \code{nox}: nitrogen oxides concentration (parts per 10 million).

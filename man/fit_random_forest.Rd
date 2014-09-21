@@ -9,6 +9,8 @@ fit_random_forest(trainset, testset, params)
 \item{trainset}{is a data.frame or data.table containing the train data.}
 
 \item{testset}{is a data.frame or data.table containing the test data.}
+
+\item{params}{is a list containing the parameters.}
 }
 \value{
 This function returns the chosen model.

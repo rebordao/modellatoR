@@ -14,7 +14,6 @@ Imports:
     ProjectTemplate,
     randomForest,
     rmarkdown,
-    data.table,
     ROCR
 Suggests:
     testthat

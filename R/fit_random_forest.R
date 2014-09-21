@@ -2,6 +2,7 @@
 #'
 #' @param trainset is a data.frame or data.table containing the train data.
 #' @param testset is a data.frame or data.table containing the test data.
+#' @param params is a list containing the parameters.
 #' @return This function returns the chosen model.
 #' @export
 #'
