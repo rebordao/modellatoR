@@ -1,10 +1,10 @@
 # Revisions
 
-### October 2014 | modellatoR 0.1.0
+### October 2014 | modellator 0.1.0
 
 Initial alpha release.
 
-- Functions to create and setup a modellatoR project.
+- Functions to create and setup a modellator project.
 - Capability to deploy Performance Analysis:
   - Trains and tests the models.
   - Generates automatic reports for regression and classification.
